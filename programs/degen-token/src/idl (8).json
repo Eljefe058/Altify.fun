@@ -1,0 +1,107 @@
+{
+  "version": "0.1.0",
+  "name": "safe_token_contract",
+  "programID": "8vzJEtuuSGSbPEE9YzGxr1s7wYSTCngSeWBoE1GDtZP1",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        { "name": "mint", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "name", "type": "string" },
+        { "name": "symbol", "type": "string" },
+        { "name": "initialLiquidity", "type": "string" }
+      ]
+    },
+    {
+      "name": "buyToken",
+      "accounts": [
+        { "name": "mint", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "lastTransactionTime", "isMut": true, "isSigner": true },
+        { "name": "liquidityAccount", "isMut": true, "isSigner": true },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": true },
+        { "name": "amount", "isMut": true, "isSigner": true },
+        { "name": "platformOwnerAccount", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "numberAmount", "type": "string" },
+        { "name": "price", "type": "string" }
+      ]
+    },
+    {
+      "name": "sellToken",
+      "accounts": [
+        { "name": "mint", "isMut": true, "isSigner": false },
+        { "name": "user", "isMut": true, "isSigner": true },
+        { "name": "lastTransactionTime", "isMut": true, "isSigner": true },
+        { "name": "liquidityAccount", "isMut": true, "isSigner": true },
+        { "name": "userTokenAccount", "isMut": true, "isSigner": true },
+        { "name": "amount", "isMut": true, "isSigner": true },
+        { "name": "platformOwnerAccount", "isMut": true, "isSigner": true },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "amountString", "type": "string" },
+        { "name": "price", "type": "string" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "LastTransactionTime",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "timestamp", "type": "string" }
+        ]
+      }
+    },
+    {
+      "name": "TokenInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "tokenName", "type": "string" },
+          { "name": "tokenSymbol", "type": "string" },
+          { "name": "tokenLiquidity", "type": "string" },
+          { "name": "tokenAdmin", "type": "publicKey" }
+        ]
+      }
+    },
+    {
+      "name": "TransactionInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "amount", "type": "string" }
+        ]
+      }
+    },
+    {
+      "name": "LiquidityAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "balance", "type": "u64" }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "AmountExceedsLimit", "msg": "Cannot exceed maximum transaction limit" },
+    { "code": 6001, "name": "TransactionTooSoon", "msg": "Transactions are happening too quickly, please wait a bit before trying again" },
+    { "code": 6002, "name": "ParseError", "msg": "Failed to parse string into u64" },
+    { "code": 6003, "name": "NotOwner", "msg": "Not the admin account" },
+    { "code": 6004, "name": "InvalidAmount", "msg": "Amount not valid" },
+    { "code": 6005, "name": "InsufficientLiquidity", "msg": "Insufficient liquidity !!!" },
+    { "code": 6006, "name": "InsufficientBalance", "msg": "Insufficient balance !!!" }
+  ]
+}

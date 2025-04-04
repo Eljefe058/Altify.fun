@@ -1,0 +1,678 @@
+{
+  "version": "0.1.0",
+  "name": "safe_token_3",
+  "programID": "2caDyUN2HzqiasfL94z8TVVYVWkAP1cb82yBFDQzeFED",
+  "instructions": [
+    {
+      "name": "mintLiquidityTokens",
+      "accounts": [
+        {
+          "name": "mintToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "liquidity",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "tokenInfo",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "mintToken",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMintAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "liquidity",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "buyToken",
+      "accounts": [
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tradeState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "fees",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "price",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "sellToken",
+      "accounts": [
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tradeState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "fees",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "price",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "addToWhitelist",
+      "accounts": [
+        {
+          "name": "whitelist",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "newWhitelister",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "setFees",
+      "accounts": [
+        {
+          "name": "feeAmount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "isFeeSet",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fees",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "pauseTrading",
+      "accounts": [
+        {
+          "name": "tradeState",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "addLiquidity",
+      "accounts": [
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "removeLiquidity",
+      "accounts": [
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "burnLiquidity",
+      "accounts": [
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "solAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "platformOwner",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintToken",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "liquidityMetadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "createTokenVesting",
+      "accounts": [
+        {
+          "name": "vestingInfo",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "releaseDate",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claimToken",
+      "accounts": [
+        {
+          "name": "vestingInfo",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "liquidityPool",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "VestingInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "releaseDate",
+            "type": "u64"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "claimed",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BuyTokenFees",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "fee",
+            "type": "u64"
+          },
+          {
+            "name": "isSet",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LiquidityInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "liquidityOwner",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Whitelisters",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "traders",
+            "type": {
+              "vec": "publicKey"
+            }
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PauseTrade",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "isPaused",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TokenInfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "liquidityAmount",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "Unauthorized",
+      "msg": "Unauthorized User !!!"
+    },
+    {
+      "code": 6001,
+      "name": "NotAWhitelister",
+      "msg": "Not Whitelisted"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidUser",
+      "msg": "Cannot transfer to user"
+    },
+    {
+      "code": 6003,
+      "name": "InsufficientAmount",
+      "msg": "Insufficient Amount !!!"
+    },
+    {
+      "code": 6004,
+      "name": "InvalidReleaseDate",
+      "msg": "Release date not reached !!!"
+    },
+    {
+      "code": 6005,
+      "name": "VestingPeriodNotReached",
+      "msg": "Vesting period has not reached !!!"
+    },
+    {
+      "code": 6006,
+      "name": "AlreadyClaimed",
+      "msg": "Vesting has already been claimed"
+    },
+    {
+      "code": 6007,
+      "name": "TradePaused",
+      "msg": "Trade paused, Pls try again !!!"
+    }
+  ]
+}
